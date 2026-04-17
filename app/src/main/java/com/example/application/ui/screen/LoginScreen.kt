@@ -54,14 +54,12 @@ fun LoginScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                // 🔥 USERNAME
                 TextFieldOutlineRegular(
                     value = username,
                     onValueChange = { username = it },
                     placeholder = "Username"
                 )
 
-                // 🔥 PASSWORD
                 TextFieldOutlineRegular(
                     value = password,
                     onValueChange = { password = it },
