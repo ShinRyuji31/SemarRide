@@ -1,22 +1,28 @@
 package com.example.application.ui.screen
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.FontWeight.Companion.Bold
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.application.R
 import com.example.application.ui.component.ButtonBlue
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
+import com.example.application.ui.component.ButtonSocial
 import com.example.application.ui.component.TextFieldOutlineRegular
 import com.example.application.ui.theme.blueWhiteGradient
 
@@ -35,42 +41,67 @@ fun LoginScreen(navController: NavController) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(24.dp)
+                .padding(horizontal = 24.dp)
                 .align(Alignment.Center)
                 .background(
-                    color = MaterialTheme.colorScheme.background,
-                    shape = RoundedCornerShape(20.dp)
+                    color = Color.White,
+                    shape = RoundedCornerShape(28.dp)
                 )
-                .padding(24.dp)
+                .padding(horizontal = 20.dp, vertical = 24.dp)
         ) {
 
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
 
                 Text(
                     text = "Login",
-                    fontSize = 20.sp,
+                    fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
 
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(20.dp))
+
+                // USERNAME
+                Text(
+                    text = "Username",
+                    modifier = Modifier.fillMaxWidth(),
+                    fontWeight = Bold,
+                    fontSize = 15.sp
+                )
+
+                Spacer(modifier = Modifier.height(4.dp))
 
                 TextFieldOutlineRegular(
                     value = username,
                     onValueChange = { username = it },
-                    placeholder = "Username"
+                    placeholder = "Enter Username"
                 )
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                // PASSWORD
+                Text(
+                    text = "Password",
+                    modifier = Modifier.fillMaxWidth(),
+                    fontWeight = Bold,
+                    fontSize = 15.sp
+                )
+
+                Spacer(modifier = Modifier.height(4.dp))
 
                 TextFieldOutlineRegular(
                     value = password,
                     onValueChange = { password = it },
-                    placeholder = "Password",
+                    placeholder = "Enter Password",
                     isPassword = true
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(18.dp))
 
                 ButtonBlue(
-                    text = "Login",
+                    text = "Log In",
                     onClick = {
                         if (username.isNotEmpty() && password.isNotEmpty()) {
                             navController.navigate("dashboard") {
@@ -83,13 +114,44 @@ fun LoginScreen(navController: NavController) {
                         .height(50.dp)
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
-                    text = "Don’t have an account? Sign Up",
+                    text = "Or log in with",
+                    fontSize = 12.sp,
+                    color = Color.Gray
+                )
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+
+                    ButtonSocial(icon = R.drawable.logo_google)
+                    ButtonSocial(icon = R.drawable.logo_facebook)
+
+                }
+
+                Spacer(modifier = Modifier.height(18.dp))
+
+                Text(
+                    text = buildAnnotatedString {
+                        append("Don’t have an account? ")
+
+                        withStyle(
+                            style = SpanStyle(
+                                fontWeight = FontWeight.Bold
+                            )
+                        ) {
+                            append("Sign Up")
+                        }
+                    },
                     modifier = Modifier.clickable {
                         navController.navigate("signup")
-                    }
+                    },
+                    fontSize = 13.sp
                 )
             }
         }

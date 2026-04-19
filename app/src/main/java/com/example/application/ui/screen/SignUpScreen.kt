@@ -28,6 +28,8 @@ import com.example.application.ui.theme.blueWhiteGradient
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.foundation.clickable
+import com.example.application.R
+import com.example.application.ui.component.ButtonSocial
 
 @Composable
 fun SignUpScreen(navController: NavController) {
@@ -96,6 +98,18 @@ fun SignUpScreen(navController: NavController) {
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
+
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+
+                    ButtonSocial(icon = R.drawable.star_icon)
+                    ButtonSocial(icon = R.drawable.star_icon)
+
+                }
+
+                Spacer(modifier = Modifier.height(18.dp))
 
                 Text(
                     text = "Already have an account? Login",

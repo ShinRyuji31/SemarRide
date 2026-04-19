@@ -18,7 +18,7 @@ fun ButtonWhite(
     OutlinedButton(
         onClick = onClick,
         modifier = modifier,
-        shape = RoundedCornerShape(25.dp),
+        shape = RoundedCornerShape(10.dp),
         border = BorderStroke(
             2.dp,
             MaterialTheme.colorScheme.primary

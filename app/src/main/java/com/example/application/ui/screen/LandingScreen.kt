@@ -31,7 +31,7 @@ fun LandingScreen(navController: NavController) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(550.dp)
+                .height(500.dp)
                 .background(
                     brush = blueWhiteGradient()
                     )
@@ -44,7 +44,7 @@ fun LandingScreen(navController: NavController) {
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(500.dp)
+                    .height(450.dp)
                     .align(Alignment.BottomCenter)
                     .padding(bottom = 40.dp)
             )
@@ -63,20 +63,20 @@ fun LandingScreen(navController: NavController) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(300.dp)
+                .height(350.dp)
                 .align(Alignment.BottomCenter)
                 .background(MaterialTheme.colorScheme.background)
         ) {
             Column(
                 modifier = Modifier
-                    .padding(horizontal = 24.dp, vertical = 28.dp)
+                    .padding(horizontal = 24.dp, vertical = 10.dp)
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
                 Text(
-                    text = "Quick delivery at your home address",
-                    fontSize = 20.sp,
+                    text = "Quick delivery at your \nhome address",
+                    fontSize = 30.sp,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center,
                     color = Color.Black
@@ -86,7 +86,7 @@ fun LandingScreen(navController: NavController) {
 
                 Text(
                     text = "Let us take care of your needs!",
-                    fontSize = 14.sp,
+                    fontSize = 20.sp,
                     textAlign = TextAlign.Center,
                     color = Color.Gray
                 )
@@ -94,16 +94,16 @@ fun LandingScreen(navController: NavController) {
                 Spacer(modifier = Modifier.height(24.dp))
 
                 ButtonBlue(
-                    text = "Login",
+                    text = "Log in",
                     onClick = {
                         navController.navigate("login")
                     },
                     modifier = Modifier
-                        .width(200.dp)
+                        .width(250.dp)
                         .height(50.dp)
                 )
 
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
                 ButtonWhite(
                     text = "Sign Up",
@@ -111,7 +111,7 @@ fun LandingScreen(navController: NavController) {
                         navController.navigate("signup")
                     },
                     modifier = Modifier
-                        .width(200.dp)
+                        .width(250.dp)
                         .height(50.dp)
                 )
             }

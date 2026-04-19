@@ -13,6 +13,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.application.ui.theme.BluePrimary
+import com.example.application.ui.theme.BlueSecondary
+import com.example.application.ui.theme.WhiteSoft
 
 @Composable
 fun ButtonBlue(
@@ -22,12 +25,12 @@ fun ButtonBlue(
 ) {
     Box(
         modifier = modifier
-            .clip(RoundedCornerShape(25.dp))
+            .clip(RoundedCornerShape(10.dp))
             .background(
                 brush = Brush.verticalGradient(
                     listOf(
-                        MaterialTheme.colorScheme.primary,
-                        MaterialTheme.colorScheme.secondary
+                        WhiteSoft,
+                        BluePrimary
                     )
                 )
             )
