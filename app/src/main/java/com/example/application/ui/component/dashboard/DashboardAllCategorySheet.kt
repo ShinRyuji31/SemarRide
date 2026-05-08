@@ -15,7 +15,8 @@ import com.example.application.ui.theme.BlackSoft
 fun DashboardAllCategorySheet(
     onClose: () -> Unit,
     onAnterClick: () -> Unit,
-    onJajanClick: () -> Unit
+    onJajanClick: () -> Unit,
+    onJastipinClick: () -> Unit
 ) {
 
     Column(

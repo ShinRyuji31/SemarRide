@@ -1,4 +1,4 @@
-package com.example.application.ui.component.jajanin.menu
+package com.example.application.ui.component.shared.delivery.inventory
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun JajaninMenuTitle(title: String) {
+fun DeliveryInventoryTitle(title: String) {
     Text(
         text = title,
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),

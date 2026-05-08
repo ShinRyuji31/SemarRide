@@ -1,4 +1,4 @@
-package com.example.application.ui.component.shared.delivery
+package com.example.application.ui.component.shared.delivery.store
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -19,15 +19,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.application.R
-import com.example.application.data.model.Restaurant
+import com.example.application.data.model.Store
 import com.example.application.ui.theme.BlackSoft
 import com.example.application.ui.theme.GrayDark
 import com.example.application.ui.theme.WhiteSoft
 import com.example.application.ui.theme.Yellow
 
 @Composable
-fun DeliveryItemCard(
-    restaurant: Restaurant,
+fun StoreCard(
+    store: Store,
     onClick: () -> Unit = {}
 ) {
 
@@ -47,7 +47,7 @@ fun DeliveryItemCard(
     ) {
 
         Image(
-            painter = painterResource(id = restaurant.imageRes),
+            painter = painterResource(id = store.imageRes),
             contentDescription = null,
             modifier = Modifier
                 .width(100.dp)
@@ -68,7 +68,7 @@ fun DeliveryItemCard(
         ) {
 
             Text(
-                text = restaurant.name,
+                text = store.name,
                 fontWeight = FontWeight.Bold,
                 fontSize = 16.sp,
                 color = BlackSoft
@@ -77,7 +77,7 @@ fun DeliveryItemCard(
             Spacer(modifier = Modifier.height(4.dp))
 
             Text(
-                text = restaurant.address,
+                text = store.address,
                 fontSize = 12.sp,
                 color = Color.Gray
             )
@@ -85,7 +85,7 @@ fun DeliveryItemCard(
             Spacer(modifier = Modifier.height(2.dp))
 
             Text(
-                text = restaurant.promo,
+                text = store.promo,
                 fontSize = 12.sp,
                 color = Color.Gray
             )
@@ -106,7 +106,7 @@ fun DeliveryItemCard(
                 Spacer(modifier = Modifier.width(4.dp))
 
                 Text(
-                    text = restaurant.rating.toString(),
+                    text = store.rating.toString(),
                     fontWeight = FontWeight.Bold,
                     fontSize = 14.sp,
                     color = BlackSoft

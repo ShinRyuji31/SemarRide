@@ -7,7 +7,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,21 +22,26 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.application.R
 import com.example.application.ui.component.global.Header
-import com.example.application.ui.component.shared.delivery.StoreInfoCard
-import com.example.application.ui.component.jajanin.menu.JajaninMenuSection
-import com.example.application.viewmodel.JajaninViewModel
+import com.example.application.ui.component.shared.delivery.store.StoreInfoCard
+import com.example.application.ui.component.shared.delivery.inventory.DeliveryInventorySection
+import com.example.application.viewmodel.StoreViewModel
 
 @Composable
 fun DeliveryDetailPage(
     onBack: () -> Unit,
     onCartClick: () -> Unit,
-    viewModel: JajaninViewModel = viewModel()
+    viewModel: StoreViewModel = viewModel()
 ) {
-    val menu by viewModel.menu.collectAsState()
-    
-    val restaurants by viewModel.restaurants.collectAsState()
-    val selectedRestaurant by viewModel.selectedRestaurant.collectAsState()
-    val restaurantToShow = selectedRestaurant ?: restaurants.firstOrNull()
+    val inventory by viewModel.inventory.collectAsState()
+
+    val stores by viewModel.stores.collectAsState()
+    val selectedStore by viewModel.selectedStore.collectAsState()
+
+    val storeToShow = selectedStore ?: stores.firstOrNull()
+
+    val filteredInventory = selectedStore?.let { store ->
+        inventory.filter { it.storeId == store.id }
+    } ?: emptyList()
 
     Box(modifier = Modifier.fillMaxSize().background(Color.White)) {
         LazyColumn(
@@ -60,21 +64,21 @@ fun DeliveryDetailPage(
             }
 
             item {
-                restaurantToShow?.let {
+                storeToShow?.let {
                     Box(modifier = Modifier.offset(y = (-40).dp)) {
-                        StoreInfoCard(restaurant = it)
+                        StoreInfoCard(store = it)
                     }
                 }
             }
 
             item {
                 Spacer(modifier = Modifier.height((-20).dp))
-                
-                val groupedMenu = menu.groupBy { it.category }
+
+                val groupedInventory = filteredInventory.groupBy { it.category }
                 
                 Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                    groupedMenu.forEach { (category, items) ->
-                        JajaninMenuSection(
+                    groupedInventory.forEach { (category, items) ->
+                        DeliveryInventorySection(
                             title = category,
                             items = items
                         )

@@ -2,8 +2,7 @@ package com.example.application.data.repository
 
 import com.example.application.R
 import com.example.application.data.model.PromoBanner
-import com.example.application.data.model.Restaurant
-import com.example.application.data.model.User
+import com.example.application.data.model.Store
 
 class DashboardRepository {
 
@@ -58,18 +57,18 @@ class DashboardRepository {
         )
     }
 
-    fun getAffordableRestaurants(): List<Restaurant> {
+    fun getAffordableRestaurants(): List<Store> {
 
-        return JajaninRepository()
-            .getRestaurants()
+        return StoreRepository()
+            .getStore()
             .sortedByDescending { it.rating }
             .take(3)
     }
 
-    fun getLastOrderRestaurant(): Restaurant {
+    fun getLastOrderRestaurant(): Store {
 
-        return JajaninRepository()
-            .getRestaurants()
+        return StoreRepository()
+            .getStore()
             .first()
     }
 }

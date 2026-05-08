@@ -1,4 +1,4 @@
-package com.example.application.ui.component.jajanin.menu
+package com.example.application.ui.component.shared.delivery.inventory
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.sp
 import com.example.application.ui.theme.GrayDark
 
 @Composable
-fun JajaninMenuItemCard(
+fun DeliveryInventoryItemCard(
     name: String,
     price: String,
     imageRes: Int,

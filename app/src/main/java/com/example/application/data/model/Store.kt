@@ -1,6 +1,8 @@
 package com.example.application.data.model
 
-data class Restaurant(
+data class Store(
+
+    val id: String,
     val name: String,
     val address: String,
     val promo: String,

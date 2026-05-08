@@ -1,4 +1,4 @@
-package com.example.application.ui.component.jajanin.menu
+package com.example.application.ui.component.shared.delivery.inventory
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -6,16 +6,16 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.application.data.model.MenuFoodItem
+import com.example.application.data.model.StoreInventory
 
 @Composable
-fun JajaninMenuSection(
+fun DeliveryInventorySection(
     title: String,
-    items: List<MenuFoodItem>
+    items: List<StoreInventory>
 ) {
     Column(modifier = Modifier.fillMaxWidth()) {
 
-        JajaninMenuTitle(title)
+        DeliveryInventoryTitle(title)
 
         LazyRow(
             contentPadding = PaddingValues(horizontal = 16.dp),
@@ -23,7 +23,7 @@ fun JajaninMenuSection(
             modifier = Modifier.fillMaxWidth()
         ) {
             items(items) { item ->
-                JajaninMenuItemCard(
+                DeliveryInventoryItemCard(
                     name = item.name,
                     price = item.price,
                     imageRes = item.imageRes

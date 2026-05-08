@@ -1,4 +1,4 @@
-package com.example.application.ui.component.shared.delivery
+package com.example.application.ui.component.shared.delivery.store
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -12,12 +12,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.application.data.model.Restaurant
-import com.example.application.ui.theme.GrayDark
+import com.example.application.data.model.Store
 
 @Composable
 fun StoreInfoCard(
-    restaurant: Restaurant
+    store: Store
 ) {
     Column(
         modifier = Modifier
@@ -38,7 +37,7 @@ fun StoreInfoCard(
         ) {
             Column {
                 Text(
-                    text = restaurant.name,
+                    text = store.name,
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -46,7 +45,7 @@ fun StoreInfoCard(
                 Spacer(modifier = Modifier.height(4.dp))
                 
                 Text(
-                    text = restaurant.address,
+                    text = store.address,
                     fontSize = 13.sp,
                     color = Color.Gray
                 )
@@ -59,7 +58,7 @@ fun StoreInfoCard(
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = "${restaurant.openTime} - ${restaurant.closeTime} WIB (${restaurant.openDays})",
+                    text = "${store.openTime} - ${store.closeTime} WIB (${store.openDays})",
                     fontSize = 13.sp,
                     color = Color.Gray
                 )
@@ -81,14 +80,14 @@ fun StoreInfoCard(
                 )
                 Spacer(modifier = Modifier.width(4.dp))
                 Text(
-                    text = restaurant.rating.toString(),
+                    text = store.rating.toString(),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold
                 )
             }
 
-            restaurant.tags.forEach { tag ->
-                StoreTag(text = tag)
+            store.tags.forEach { tag ->
+                StoreInfoCardTag(text = tag)
             }
         }
     }

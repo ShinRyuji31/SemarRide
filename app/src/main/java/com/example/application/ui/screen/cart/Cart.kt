@@ -3,7 +3,6 @@ package com.example.application.ui.screen.cart
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,7 +19,6 @@ import com.example.application.ui.component.global.ButtonWhite
 import com.example.application.ui.component.global.Header
 import com.example.application.ui.theme.BluePrimary
 import com.example.application.ui.theme.BlueSecondary
-import com.example.application.ui.theme.WhiteSoft
 
 @Composable
 fun CartScreen(
@@ -68,7 +66,6 @@ fun CartScreen(
                 }
             }
 
-            // Summary Section
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -141,7 +138,6 @@ fun CartScreen(
                 }
             }
 
-            // Bottom Gradient Button Section
             Box(
                 modifier = Modifier
                     .fillMaxWidth()

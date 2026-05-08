@@ -2,7 +2,7 @@ package com.example.application.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.application.data.model.PromoBanner
-import com.example.application.data.model.Restaurant
+import com.example.application.data.model.Store
 import com.example.application.data.model.User
 import com.example.application.data.repository.DashboardRepository
 import com.example.application.data.repository.UserRepository
@@ -30,16 +30,16 @@ class DashboardViewModel(
             = _bottomBanners
 
     private val _affordableRestaurants =
-        MutableStateFlow<List<Restaurant>>(emptyList())
+        MutableStateFlow<List<Store>>(emptyList())
 
-    val affordableRestaurants: StateFlow<List<Restaurant>>
+    val affordableRestaurants: StateFlow<List<Store>>
             = _affordableRestaurants
 
-    private val _lastOrderRestaurant =
-        MutableStateFlow<Restaurant?>(null)
+    private val _lastOrderStore =
+        MutableStateFlow<Store?>(null)
 
-    val lastOrderRestaurant: StateFlow<Restaurant?>
-            = _lastOrderRestaurant
+    val lastOrderStore: StateFlow<Store?>
+            = _lastOrderStore
 
     init {
         loadDashboard()
@@ -58,7 +58,7 @@ class DashboardViewModel(
         _affordableRestaurants.value =
             dashboardRepository.getAffordableRestaurants()
 
-        _lastOrderRestaurant.value =
+        _lastOrderStore.value =
             dashboardRepository.getLastOrderRestaurant()
     }
 }

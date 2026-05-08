@@ -10,21 +10,34 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.application.ui.component.global.Header
 import com.example.application.ui.component.global.SearchBar
-import com.example.application.ui.component.shared.delivery.DeliveryItemList
+import com.example.application.ui.component.shared.delivery.store.StoreCardList
 import com.example.application.ui.theme.WhiteSoft
-import com.example.application.viewmodel.JajaninViewModel
+import com.example.application.viewmodel.StoreViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import com.example.application.data.model.StoreType
 
 @Composable
 fun DeliveryMainPage(
+    type: StoreType,
     onBack: () -> Unit,
-    onRestaurantClick: () -> Unit,
-    viewModel: JajaninViewModel = viewModel()
-) {
+    onStoreClick: () -> Unit,
+    viewModel: StoreViewModel = viewModel()
+){
 
-    val restaurants by viewModel.restaurants.collectAsState()
+    val stores by viewModel.stores.collectAsState()
+
+    val filteredStores = when (type) {
+
+        StoreType.FOOD -> {
+            stores.filter { it.id.startsWith("F") }
+        }
+
+        StoreType.RETAIL -> {
+            stores.filter { it.id.startsWith("R") }
+        }
+    }
 
     Box(modifier = Modifier.fillMaxSize()) {
 
@@ -49,13 +62,13 @@ fun DeliveryMainPage(
             }
 
             item {
-                DeliveryItemList(
-                    restaurants = restaurants,
-                    onRestaurantClick = { restaurant ->
+                StoreCardList(
+                    stores = filteredStores,
+                    onStoreClick = { store ->
 
-                        viewModel.selectRestaurant(restaurant)
+                        viewModel.selectStore(store)
 
-                        onRestaurantClick()
+                        onStoreClick()
                     }
                 )
 
@@ -64,7 +77,11 @@ fun DeliveryMainPage(
         }
 
         Header(
-            title = "Jajan-In",
+            title = if (type == StoreType.FOOD) {
+                "Jajan-In"
+            } else {
+                "Jastip-In"
+            },
             onBack = onBack,
             modifier = Modifier.align(Alignment.TopCenter)
         )

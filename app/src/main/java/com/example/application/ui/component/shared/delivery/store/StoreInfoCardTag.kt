@@ -1,4 +1,4 @@
-package com.example.application.ui.component.shared.delivery
+package com.example.application.ui.component.shared.delivery.store
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.sp
 import com.example.application.ui.theme.GrayDark
 
 @Composable
-fun StoreTag(
+fun StoreInfoCardTag(
     text: String
 ) {
     Text(

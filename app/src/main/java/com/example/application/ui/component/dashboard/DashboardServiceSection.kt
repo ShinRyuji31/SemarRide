@@ -11,6 +11,7 @@ import com.example.application.ui.component.global.ButtonIcon
 fun DashboardServiceSection(
     onAnjeminClick: () -> Unit,
     onJajaninClick: () -> Unit,
+    onJastipinClick: () -> Unit,
     onAllClick: () -> Unit
 ) {
     Row(
@@ -29,7 +30,7 @@ fun DashboardServiceSection(
         }
 
         ButtonIcon("Jastip-in", R.drawable.ic_bag) {
-            // belum aktif
+            onJastipinClick()
         }
 
         ButtonIcon("All", R.drawable.ic_all) {

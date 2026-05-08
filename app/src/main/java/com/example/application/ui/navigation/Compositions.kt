@@ -1,6 +1,7 @@
 package com.example.application.ui.navigation
 
 import androidx.compose.runtime.Composable
+import com.example.application.data.model.StoreType
 import com.example.application.ui.screen.*
 import com.example.application.ui.screen.anterin.*
 import com.example.application.ui.screen.cart.CartScreen
@@ -36,7 +37,8 @@ fun AppNavigation(
         is Routes.DashBoardRoute -> DashboardScreen(
             onProfileClick = { onNavigate(Routes.ProfileRoute) },
             onAnjeminClick = { onNavigate(Routes.AnterPickupInputRoute) },
-            onJajaninClick = { onNavigate(Routes.JajaninMainRoute) }
+            onJajaninClick = { onNavigate(Routes.JajaninMainRoute) },
+            onJastipinClick = { onNavigate(Routes.JastipinMainRoute) }
         )
 
         is Routes.ProfileRoute -> ProfileScreen(
@@ -85,8 +87,9 @@ fun AppNavigation(
         // JAJAN FLOW ==============================================================
 
         is Routes.JajaninMainRoute -> DeliveryMainPage(
+            type = StoreType.FOOD,
             onBack = onBack,
-            onRestaurantClick = {
+            onStoreClick = {
                 onNavigate(Routes.JajaninDetailRoute)
             }
         )
@@ -94,6 +97,14 @@ fun AppNavigation(
         is Routes.JajaninDetailRoute -> DeliveryDetailPage(
             onBack = onBack,
             onCartClick = { onNavigate(Routes.CartRoute) }
+        )
+
+        is Routes.JastipinMainRoute -> DeliveryMainPage(
+            type = StoreType.RETAIL,
+            onBack = onBack,
+            onStoreClick = {
+                onNavigate(Routes.JajaninDetailRoute)
+            }
         )
 
         // CART ====================================================================

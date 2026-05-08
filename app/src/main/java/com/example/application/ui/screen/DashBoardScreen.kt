@@ -28,6 +28,7 @@ fun DashboardScreen(
     onProfileClick: () -> Unit,
     onAnjeminClick: () -> Unit,
     onJajaninClick: () -> Unit,
+    onJastipinClick: () -> Unit,
     viewModel: DashboardViewModel = viewModel()
 ) {
 
@@ -35,7 +36,7 @@ fun DashboardScreen(
     val topBanners by viewModel.topBanners.collectAsState()
     val bottomBanners by viewModel.bottomBanners.collectAsState()
     val affordableRestaurants by viewModel.affordableRestaurants.collectAsState()
-    val lastOrderRestaurant by viewModel.lastOrderRestaurant.collectAsState()
+    val lastOrderRestaurant by viewModel.lastOrderStore.collectAsState()
 
     val listState = rememberLazyListState()
 
@@ -65,6 +66,11 @@ fun DashboardScreen(
                 onJajanClick = {
                     showBottomSheet = false
                     onJajaninClick()
+                },
+
+                onJastipinClick = {
+                    showBottomSheet = false
+                    onJastipinClick()
                 }
             )
         }
@@ -151,17 +157,19 @@ fun DashboardScreen(
 
                             onJajaninClick = onJajaninClick,
 
+                            onJastipinClick = onJastipinClick,
+
                             onAllClick = {
                                 showBottomSheet = true
                             }
                         )
 
                         DashboardLastOrder(
-                            restaurant = lastOrderRestaurant
+                            store = lastOrderRestaurant
                         )
 
                         DashboardAffordableRestaurant(
-                            restaurants = affordableRestaurants
+                            stores = affordableRestaurants
                         )
 
                         DashboardBottomBanner(

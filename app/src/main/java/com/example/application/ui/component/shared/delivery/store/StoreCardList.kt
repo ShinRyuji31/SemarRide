@@ -1,4 +1,4 @@
-package com.example.application.ui.component.shared.delivery
+package com.example.application.ui.component.shared.delivery.store
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -9,12 +9,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.application.data.model.Restaurant
+import com.example.application.data.model.Store
 
 @Composable
-fun DeliveryItemList(
-    restaurants: List<Restaurant>,
-    onRestaurantClick: (Restaurant) -> Unit
+fun StoreCardList(
+    stores: List<Store>,
+    onStoreClick: (Store) -> Unit
 ) {
 
     Column {
@@ -27,12 +27,12 @@ fun DeliveryItemList(
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        restaurants.forEach { restaurant ->
+        stores.forEach { store ->
 
-            DeliveryItemCard(
-                restaurant = restaurant,
+            StoreCard(
+                store = store,
                 onClick = {
-                    onRestaurantClick(restaurant)
+                    onStoreClick(store)
                 }
             )
         }
